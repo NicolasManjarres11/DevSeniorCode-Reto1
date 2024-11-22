@@ -58,6 +58,7 @@ public class App {
         System.out.println("3. Iniciar la simulación de viaje");
         System.out.println("4. Salir del programa.");
         option = sc.nextInt();
+        System.out.println("");
 
         switch (option) {
             case 1:
@@ -82,7 +83,9 @@ public class App {
     //Print y métodos de planetas
 
     public static void showPlanets() {
-        
+        for (int i = 0; i < planets.length; i++) {
+            System.out.println((i+1)+". "+planets[i]);
+        }
     }
 
     //Print y métodos de naves
