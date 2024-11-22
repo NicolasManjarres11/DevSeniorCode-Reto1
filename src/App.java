@@ -16,8 +16,8 @@ public class App {
 
     //Naves espaciales, detalles y descripción
 
-    public static String[] starships = {"Nave 1","Nave 2","Nave 3","Nave 4",}; //Pendiente por definir nombres
-    public static double[] speed = {4.0, 17.0, 35.0 ,55.0}; //Velocidades en millones de km/h (Sujeto a cambios)
+    public static String[] starships = {"Astra Voyager","Pioneer Horizon","Stellar Odyssey","Cosmos Endeavor",}; 
+    public static double[] speed = {4.0, 5.0, 3.0 ,6.0}; //Velocidades en millones de km/h
 
     public static String[] descriptionStarship = {}; //Pendiente por agregar descripción correspondiente
 
