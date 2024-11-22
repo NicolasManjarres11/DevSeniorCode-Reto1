@@ -58,6 +58,7 @@ public class App {
         System.out.println("3. Iniciar la simulación de viaje");
         System.out.println("4. Salir del programa.");
         option = sc.nextInt();
+        System.out.println("");
 
         switch (option) {
             case 1:
