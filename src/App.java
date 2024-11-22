@@ -28,34 +28,16 @@ public class App {
     public static double fuelReserve;
     public static double oxigenReserve;
 
+    //Variables lógicas
 
+    static boolean startSimulation = true;
     
     public static void main(String[] args){
 
-        int option;
 
         do { 
-            showMenu();
-            option = sc.nextInt();
-            
-            switch (option) {
-                case 1:
-                    showPlanets();  //Sujeto a cambios para agregar metodos de planetas, por ejemplo, "seleccionarPlaneta()""
-                    break;
-                case 2:
-                    showStarships(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
-                    break;
-                case 3:
-                    travelSimulation(); 
-                    break;
-                case 4:
-                    System.out.println("Saliendo del programa...");
-                    break;
-                default:
-                    System.err.println("Opción inválida. Inténtelo de nuevo");
-            }
-
-        } while (option != 4);
+            menu(); 
+        } while (startSimulation);
 
         sc.close();
 
@@ -64,7 +46,9 @@ public class App {
 
     //Menú de opciones
 
-    public static void showMenu(){
+    public static void menu(){
+
+        int option;
 
         System.out.println("Simulador de Viaje interplanetario");
         System.out.println("************************************");
@@ -73,6 +57,25 @@ public class App {
         System.out.println("2. Seleccionar una nave espacial.");
         System.out.println("3. Iniciar la simulación de viaje");
         System.out.println("4. Salir del programa.");
+        option = sc.nextInt();
+
+        switch (option) {
+            case 1:
+                showPlanets();  //Sujeto a cambios para agregar metodos de planetas, por ejemplo, "seleccionarPlaneta()""
+                break;
+            case 2:
+                showStarships(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
+                break;
+            case 3:
+                travelSimulation(); 
+                break;
+            case 4:
+                System.out.println("Saliendo del programa...");
+                startSimulation = false;
+                break;
+            default:
+                System.err.println("Opción inválida. Inténtelo de nuevo");
+        }
 
     }
 
