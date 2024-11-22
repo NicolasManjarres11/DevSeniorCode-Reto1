@@ -23,10 +23,10 @@ public class App {
 
     //Variables a utilizar
 
-    public static String choosePlanet = "";
-    public static String chooseStarship = "";
-    public static String fuelReserve = "";
-    public static String oxigenReserve = "";
+    public static int choosePlanet;
+    public static int chooseStarship;
+    public static double fuelReserve;
+    public static double oxigenReserve;
 
 
     
