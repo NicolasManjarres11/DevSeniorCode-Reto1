@@ -87,8 +87,29 @@ public class App {
 
     //Print y métodos de naves
 
-    public static void showStarships(){
-        
+    public static void showStarships() {
+        System.out.println("\nNaves disponibles: ");
+        for (int i = 0; i < starships.length; i++) {
+            System.out.println((i + 1) + ". Nave: " + starships[i] + " | Velocidad: " + speed[i] + " Mkm/h");
+        }
+    }
+
+    public static void chooseStarship() {
+        showStarships();
+
+        int option;
+
+        do {
+            System.out.print("\nIngresa el numero de una nave para elegirla: ");
+            option = sc.nextInt();
+            System.out.println("Haz elegido la nave: " + starships[option - 1]);
+            sc.nextLine();
+            System.out.print("Presione Enter para confirmar. ");
+            sc.nextLine();
+        } while (option < 0 || option > starships.length);
+
+        System.out.println("Nave " + starships[option - 1] + " seleccionada correctamente.");
+        chooseStarship = option - 1;
     }
 
     //Duración del viaje
