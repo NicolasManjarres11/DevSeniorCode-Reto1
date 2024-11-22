@@ -8,20 +8,29 @@ public class App {
     static Scanner sc = new Scanner(System.in);
     static Random rnd = new Random();
 
-
     //Planetas, detalles y descripción
     
     public static String[] planets = {"Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno"};
     public static double[] distances = {91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0};
-    public static String[] descriptionPlanet = {};
+    public static String[] descriptionPlanet = {}; //Pendiente por agregar descripción correspondiente
 
     //Naves espaciales, detalles y descripción
 
-    public static String[] starships = {"Nave 1","Nave 2","Nave 3","Nave 4",};
-    public static double[] speed = {4.0, 17.0, 0.345,55.0};
-    public static String[] descriptionStarship = {};
+    public static String[] starships = {"Nave 1","Nave 2","Nave 3","Nave 4",}; //Pendiente por definir nombres
+    public static double[] speed = {4.0, 17.0, 35.0 ,55.0}; //Velocidades en millones de km/h (Sujeto a cambios)
+
+    public static String[] descriptionStarship = {}; //Pendiente por agregar descripción correspondiente
+
+    //Variables a utilizar
+
+    public static String choosePlanet = "";
+    public static String chooseStarship = "";
+    public static String fuelReserve = "";
+    public static String oxigenReserve = "";
+
+
     
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
 
         int option;
 
@@ -37,7 +46,7 @@ public class App {
                     showStarships(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
                     break;
                 case 3:
-                    
+                    travelSimulation(); 
                     break;
                 case 4:
                     System.out.println("Saliendo del programa...");
@@ -60,7 +69,7 @@ public class App {
         System.out.println("Simulador de Viaje interplanetario");
         System.out.println("************************************");
         System.out.println("\nSelecciona una de las siguientes opciones");
-        System.out.println("1. Seleccionar un planeta de destino.");
+        System.out.println("\n1. Seleccionar un planeta de destino.");
         System.out.println("2. Seleccionar una nave espacial.");
         System.out.println("3. Iniciar la simulación de viaje");
         System.out.println("4. Salir del programa.");
@@ -76,13 +85,20 @@ public class App {
     //Print y métodos de naves
 
     public static void showStarships(){
+        
+    }
 
+    //Duración del viaje
+
+    public static void travelDuration(double distance, double speed){
+
+        
     }
 
     //Método de simulación de viaje
 
     public static void travelSimulation(){
-
+        
     }
 
     //Método de eventos aleatorios
@@ -90,6 +106,8 @@ public class App {
     public static void randomEvents(){
 
     }
+
+    
 
 
 }
