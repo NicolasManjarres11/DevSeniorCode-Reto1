@@ -50,7 +50,7 @@ public class App {
 
         int option;
 
-        System.out.println("Simulador de Viaje interplanetario");
+        System.out.println("\nSimulador de Viaje interplanetario");
         System.out.println("************************************");
         System.out.println("\nSelecciona una de las siguientes opciones");
         System.out.println("\n1. Seleccionar un planeta de destino.");
@@ -62,7 +62,7 @@ public class App {
 
         switch (option) {
             case 1:
-                showPlanets();  //Sujeto a cambios para agregar metodos de planetas, por ejemplo, "seleccionarPlaneta()""
+                choosePlanet();  //Sujeto a cambios para agregar metodos de planetas, por ejemplo, "seleccionarPlaneta()""
                 break;
             case 2:
                 showStarships(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
@@ -83,9 +83,25 @@ public class App {
     //Print y métodos de planetas
 
     public static void showPlanets() {
+        System.out.println("Planetas disponibles: ");
         for (int i = 0; i < planets.length; i++) {
-            System.out.println((i+1)+". "+planets[i]);
+            System.out.println((i+1)+". "+planets[i] + " | Distancia: "+distances[i]+" millones de kilómetros.");
         }
+    }
+
+    public static void choosePlanet(){
+
+        showPlanets();
+
+        int option;
+
+        do { 
+            System.out.println("Ingresa el número del planeta que deseas elegir: ");
+            option = sc.nextInt();
+
+            
+        } while (option > starships.length);
+
     }
 
     //Print y métodos de naves
