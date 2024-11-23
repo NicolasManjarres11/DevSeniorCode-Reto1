@@ -1,15 +1,14 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class App {
 
     //Clases a utilizar
-
     static Scanner sc = new Scanner(System.in);
     static Random rnd = new Random();
 
     //Planetas, detalles y descripción
-    
     public static String[] planets = {"Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno"};
     public static double[] distances = {91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0};
     public static String[] descriptionPlanet = {
@@ -23,41 +22,34 @@ public class App {
     };
 
     //Naves espaciales, detalles y descripción
-
-    public static String[] starships = {"Astra Voyager","Pioneer Horizon","Stellar Odyssey","Cosmos Endeavor",}; 
-    public static double[] speed = {4.0, 5.0, 3.0 ,6.0}; //Velocidades en millones de km/h
+    public static String[] starships = {"Astra Voyager", "Pioneer Horizon", "Stellar Odyssey", "Cosmos Endeavor",};
+    public static double[] speed = {4.0, 5.0, 3.0, 6.0}; //Velocidades en millones de km/h
 
     public static String[] descriptionStarship = {}; //Pendiente por agregar descripción correspondiente
 
     //Variables a utilizar
-
     public static int choosePlanet;
     public static int chooseStarship;
     public static double fuelReserve;
     public static double oxigenReserve;
 
     //Variables lógicas
-
     static boolean startSimulation = true;
-    
-    public static void main(String[] args){
 
+    public static void main(String[] args) {
 
-        do { 
-            menu(); 
+        do {
+            menu();
         } while (startSimulation);
 
         sc.close();
 
     }
 
-
     //Menú de opciones
-
-    public static void menu(){
+    public static void menu() {
 
         int option;
-        
 
         System.out.println("\nSimulador de Viaje interplanetario");
         System.out.println("************************************");
@@ -90,51 +82,46 @@ public class App {
     }
 
     //Print y métodos de planetas
-
     public static void showPlanets() {
         System.out.println("Planetas disponibles: ");
         for (int i = 0; i < planets.length; i++) {
-            System.out.println((i+1)+". "+planets[i] + " | Distancia: "+distances[i]+" millones de kilómetros.");
+            System.out.println((i + 1) + ". " + planets[i] + " | Distancia: " + distances[i] + " millones de kilómetros.");
         }
     }
 
-    public static void choosePlanet(){
+    public static void choosePlanet() {
 
         showPlanets();
 
         int option;
 
-
-        do { 
+        do {
             System.out.println("Ingresa el número del planeta que deseas elegir: ");
             option = sc.nextInt();
 
-            if(!(option <= planets.length)){
+            if (!(option <= planets.length)) {
                 option = 0;
                 System.out.println("Opción inválida. inténtelo de nuevo.");
                 System.out.println();
                 showPlanets();
-                
-            } else{
-                
-                System.out.println("\nHaz seleccionado el planeta: "+planets[option-1]);
-                System.out.println(descriptionPlanet[option-1]);
+
+            } else {
+
+                System.out.println("\nHaz seleccionado el planeta: " + planets[option - 1]);
+                System.out.println(descriptionPlanet[option - 1]);
                 sc.nextLine();
                 System.out.println("Presione Enter para confirmar.");
                 sc.nextLine();
             }
 
-            
-            
         } while (option == 0);
 
-        System.out.println("Planeta "+planets[option-1]+" seleccionado correctamente.");
-        choosePlanet = option-1;
+        System.out.println("Planeta " + planets[option - 1] + " seleccionado correctamente.");
+        choosePlanet = option - 1;
 
     }
 
     //Print y métodos de naves
-
     public static void showStarships() {
         System.out.println("\nNaves disponibles: ");
         for (int i = 0; i < starships.length; i++) {
@@ -161,32 +148,37 @@ public class App {
     }
 
     //Duración del viaje
+    public static void travelDuration(double distance, double speed) {
 
-    public static void travelDuration(double distance, double speed){
-
-        
     }
 
     //Método de simulación de viaje
+    public static void travelSimulation() {
 
-    public static void travelSimulation(){
-        
     }
 
     //Método de llamado de eventos aleatorios
-    public static void randomEvents(int num){
-        
+    public static void randomEvents(int num) {
+
         //Se puede llamar al método co este parámetro, para que de un numero
         // random de 1 a 5, de la siguiente manera
-
         //randomEvents(rnd.nextInt(5)+1);
-
         switch (num) {
-            case 1: cosmicRadiationStorm(fuelReserve,oxigenReserve); break;
-            case 2: gravitationalInterference(fuelReserve,oxigenReserve); break;
-            case 3: unknownAlienTech(fuelReserve,oxigenReserve); break;
-            case 4: systemsFailures(fuelReserve, oxigenReserve); break;
-            case 5: collision(fuelReserve,oxigenReserve); break;
+            case 1:
+                cosmicRadiationStorm(fuelReserve, oxigenReserve);
+                break;
+            case 2:
+                gravitationalInterference(fuelReserve, oxigenReserve);
+                break;
+            case 3:
+                unknownAlienTech(fuelReserve, oxigenReserve);
+                break;
+            case 4:
+                systemsFailures(fuelReserve, oxigenReserve);
+                break;
+            case 5:
+                collision(fuelReserve, oxigenReserve);
+                break;
             default:
                 System.err.println("Sin evento aleatorio");
         }
@@ -194,8 +186,7 @@ public class App {
     }
 
     // Eventos aleatorios
-
-    public static void cosmicRadiationStorm(double fuelReserve,double oxigenReserve){
+    public static void cosmicRadiationStorm(double fuelReserve, double oxigenReserve) {
 
         double oxygen = 4000;
         double fuel = 4000;
@@ -203,7 +194,7 @@ public class App {
         int option;
 
         System.out.println("Tormenta de radiación cósmica ");
-            System.out.printf("""
+        System.out.printf("""
     
                     Estás pasando cerca de una tormenta de radiación cósmica con un estallido
                     inesperado de radiación gamma que podría deshabilitar sistemas eletrónicos
@@ -216,25 +207,23 @@ public class App {
                         (Se perderá (%.2f) litros de combustible).
 
                     Ingresa el número de la acción que deseas realizar:
-                    """,oxygen,fuel);
-    
-                    
+                    """, oxygen, fuel);
 
-        do { 
+        do {
 
-            option =sc.nextInt();
+            option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
                     System.out.println("Has habilitado el campo electromagnético de la nave.");
-                    oxigenReserve-=oxygen;
-                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    oxigenReserve -= oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
                     System.out.println("Has utilizado las turbinas a su máximo rendimiento.");
-                    fuelReserve-=fuel;
-                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    fuelReserve -= fuel;
+                    System.out.printf("Te queda %.2f de oxigeno", fuelReserve);
                     startEvent = false;
                     break;
                 default:
@@ -246,7 +235,7 @@ public class App {
 
     }
 
-    public static void gravitationalInterference(double fuelReserve,double oxigenReserve){
+    public static void gravitationalInterference(double fuelReserve, double oxigenReserve) {
 
         double oxygen = 6750;
         double fuel = 8400;
@@ -254,7 +243,7 @@ public class App {
         int option;
 
         System.out.println("Interferencia gravitacional ");
-            System.out.printf("""
+        System.out.printf("""
     
                     La nave se está acercando a un área donde hay un agujero negro, esto podría 
                     alterar el curso debido a su fuerte influencia gravitacional, dañando así los
@@ -267,23 +256,23 @@ public class App {
                         (Se perderá (%.2f) litros de combustible).
 
                     Ingresa el número de la acción que deseas realizar:
-                    """,oxygen,fuel);
+                    """, oxygen, fuel);
 
-        do { 
+        do {
 
-            option =sc.nextInt();
+            option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
                     System.out.println("Has ingresado a la cámara de seguridad durante la emergencia.");
-                    oxigenReserve-=oxygen;
-                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    oxigenReserve -= oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
                     System.out.println("Se activaron los propulsores durante la emergencia.");
-                    fuelReserve-=fuel;
-                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    fuelReserve -= fuel;
+                    System.out.printf("Te queda %.2f de oxigeno", fuelReserve);
                     startEvent = false;
                     break;
                 default:
@@ -294,9 +283,8 @@ public class App {
         } while (startEvent);
 
     }
-    
-    public static void unknownAlienTech(double fuelReserve,double oxigenReserve){
 
+    public static void unknownAlienTech(double fuelReserve, double oxigenReserve) {
 
         double oxygen = 4200;
         double fuel = 5400;
@@ -304,7 +292,7 @@ public class App {
         int option;
 
         System.out.println("Encuentro con tecnología alienígena desconocida");
-            System.out.printf("""
+        System.out.printf("""
     
                     La nave ha detectado una señal de estructuras artificiales desconocidas
                     en el camino y el sistema alerta una amenaza grande. ¿Qué deseas hacer?:
@@ -316,23 +304,23 @@ public class App {
                         (Se perderá (%.2f) litros de combustible).
 
                     Ingresa el número de la acción que deseas realizar:
-                    """,oxygen,fuel);
+                    """, oxygen, fuel);
 
-        do { 
+        do {
 
-            option =sc.nextInt();
+            option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
                     System.out.println("Se está vigilando todas las áreas de las naves");
-                    oxigenReserve-=oxygen;
-                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    oxigenReserve -= oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
                     System.out.println("Se han activado los sistemas avanzados de defensa de la nave");
-                    fuelReserve-=fuel;
-                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    fuelReserve -= fuel;
+                    System.out.printf("Te queda %.2f de oxigeno", fuelReserve);
                     startEvent = false;
                     break;
                 default:
@@ -342,11 +330,9 @@ public class App {
 
         } while (startEvent);
 
-
     }
-    
-    public static void systemsFailures(double fuelReserve,double oxigenReserve){
 
+    public static void systemsFailures(double fuelReserve, double oxigenReserve) {
 
         double oxygen = 10000;
         double fuel = 10000;
@@ -354,7 +340,7 @@ public class App {
         int option;
 
         System.out.println("Fallos en los sistemas de soporte vital");
-            System.out.printf("""
+        System.out.printf("""
     
                     Se ha detectado un mal funcionamiento en sistemas críticos como el
                     reclicado de aire, administración de combustible y otras fallas
@@ -367,23 +353,23 @@ public class App {
                         (Se perderá (%.2f) litros de combustible).
 
                     Ingresa el número de la acción que deseas realizar:
-                    """,oxygen,fuel);
+                    """, oxygen, fuel);
 
-        do { 
+        do {
 
-            option =sc.nextInt();
+            option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
                     System.out.println("Se activaron mecanismos de respaldos");
-                    oxigenReserve-=oxygen;
-                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    oxigenReserve -= oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
                     System.out.println("Se han activado un módulo inteligente de la nave");
-                    fuelReserve-=fuel;
-                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    fuelReserve -= fuel;
+                    System.out.printf("Te queda %.2f de oxigeno", fuelReserve);
                     startEvent = false;
                     break;
                 default:
@@ -394,8 +380,7 @@ public class App {
         } while (startEvent);
     }
 
-    public static void collision(double fuelReserve,double oxigenReserve){
-
+    public static void collision(double fuelReserve, double oxigenReserve) {
 
         double oxygen = 28000;
         double fuel = 28000;
@@ -403,7 +388,7 @@ public class App {
         int option;
 
         System.out.println("Colisión con meteoritos y/o basura espacial");
-            System.out.printf("""
+        System.out.printf("""
     
                     A pesar de los escudos, la nave ha recibido un impacto con un objeto
                     a alta velocidad, lo cual ha perforado el casco y se requieren reparaciones inmediatas. ¿Qué deseas hacer?:
@@ -415,23 +400,23 @@ public class App {
                         (Se perderá (%.2f) litros de combustible).
 
                     Ingresa el número de la acción que deseas realizar:
-                    """,oxygen,fuel);
+                    """, oxygen, fuel);
 
-        do { 
+        do {
 
-            option =sc.nextInt();
+            option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
                     System.out.println("Se realizó la reparación del área afectada.");
-                    oxigenReserve-=oxygen;
-                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    oxigenReserve -= oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
                     System.out.println("Se ha retirado módulo afectado");
-                    fuelReserve-=fuel;
-                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    fuelReserve -= fuel;
+                    System.out.printf("Te queda %.2f de oxigeno", fuelReserve);
                     startEvent = false;
                     break;
                 default:
@@ -440,7 +425,6 @@ public class App {
             }
 
         } while (startEvent);
-
 
     }
 
