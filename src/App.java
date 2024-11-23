@@ -179,8 +179,8 @@ public class App {
             case 1: cosmicRadiationStorm(fuelReserve,oxigenReserve); break;
             case 2: gravitationalInterference(fuelReserve,oxigenReserve); break;
             case 3: unknownAlienTech(fuelReserve,oxigenReserve); break;
-            case 4: event4(); break;
-            case 5: event5(); break;
+            case 4: systemsFailures(fuelReserve, oxigenReserve); break;
+            case 5: collision(fuelReserve,oxigenReserve); break;
             default:
                 System.err.println("Sin evento aleatorio");
         }
@@ -291,6 +291,7 @@ public class App {
     
     public static void unknownAlienTech(double fuelReserve,double oxigenReserve){
 
+
         double oxygen = 4200;
         double fuel = 5400;
         var startEvent = true;
@@ -337,18 +338,104 @@ public class App {
 
 
     }
-    public static void event4(){
-
-    }
-    public static void event5(){
-
-    }
-
-    //Llamada a metodos de eventos aleatorios
-
-
-
     
+    public static void systemsFailures(double fuelReserve,double oxigenReserve){
 
+
+        double oxygen = 10000;
+        double fuel = 10000;
+        var startEvent = true;
+        int option;
+
+        System.out.println("Fallos en los sistemas de soporte vital");
+            System.out.printf("""
+    
+                    Se ha detectado un mal funcionamiento en sistemas críticos como el
+                    reclicado de aire, administración de combustible y otras fallas
+                    más. ¿Qué deseas hacer?:
+    
+                    1. Desactivar los mecanismos y activar los mecanismos de respaldo.
+                        (Se perderá (%.2f) litros de oxigeno).
+    
+                    2. Utilizar uno de los módulos inteligentes de la nave para suplir esos sistemas.
+                        (Se perderá (%.2f) litros de combustible).
+
+                    Ingresa el número de la acción que deseas realizar:
+                    """,oxygen,fuel);
+
+        do { 
+
+            option =sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    System.out.println("Se activaron mecanismos de respaldos");
+                    oxigenReserve-=oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    startEvent = false;
+                    break;
+                case 2:
+                    System.out.println("Se han activado un módulo inteligente de la nave");
+                    fuelReserve-=fuel;
+                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    startEvent = false;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    break;
+            }
+
+        } while (startEvent);
+    }
+
+    public static void collision(double fuelReserve,double oxigenReserve){
+
+
+        double oxygen = 28000;
+        double fuel = 28000;
+        var startEvent = true;
+        int option;
+
+        System.out.println("Colisión con meteoritos y/o basura espacial");
+            System.out.printf("""
+    
+                    A pesar de los escudos, la nave ha recibido un impacto con un objeto
+                    a alta velocidad, lo cual ha perforado el casco y se requieren reparaciones inmediatas. ¿Qué deseas hacer?:
+    
+                    1. Detener el trayecto, revisar el impacto y repararlo.
+                        (Se perderá (%.2f) litros de oxigeno).
+    
+                    2. Se desprenderá módulo afectado de la nave, se requiere utilizar combustible para hacerlo.
+                        (Se perderá (%.2f) litros de combustible).
+
+                    Ingresa el número de la acción que deseas realizar:
+                    """,oxygen,fuel);
+
+        do { 
+
+            option =sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    System.out.println("Se realizó la reparación del área afectada.");
+                    oxigenReserve-=oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    startEvent = false;
+                    break;
+                case 2:
+                    System.out.println("Se ha retirado módulo afectado");
+                    fuelReserve-=fuel;
+                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    startEvent = false;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    break;
+            }
+
+        } while (startEvent);
+
+
+    }
 
 }
