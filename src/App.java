@@ -174,7 +174,7 @@ public class App {
 
     //Método de eventos aleatorios
 
-    public static void event1(){
+    public static void event(){
         
     }
     public static void event2(){
