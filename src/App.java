@@ -12,7 +12,9 @@ public class App {
     
     public static String[] planets = {"Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno"};
     public static double[] distances = {91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0};
-    public static String[] descriptionPlanet = {}; //Pendiente por agregar descripción correspondiente
+    public static String[] descriptionPlanet = {
+        
+    }; //Pendiente por agregar descripción correspondiente
 
     //Naves espaciales, detalles y descripción
 
@@ -95,12 +97,31 @@ public class App {
 
         int option;
 
+
         do { 
             System.out.println("Ingresa el número del planeta que deseas elegir: ");
             option = sc.nextInt();
 
+            if(!(option <= planets.length)){
+                option = 0;
+                System.out.println("Opción inválida. inténtelo de nuevo.");
+                System.out.println();
+                showPlanets();
+                
+            } else{
+                
+                System.out.println("\nHaz seleccionado el planeta: "+planets[option-1]);
+                sc.nextLine();
+                System.out.println("Presione Enter para confirmar.");
+                sc.nextLine();
+            }
+
             
-        } while (option > starships.length);
+            
+        } while (option == 0);
+
+        System.out.println("Planeta "+planets[option-1]+" seleccionado correctamente.");
+        choosePlanet = option-1;
 
     }
 
