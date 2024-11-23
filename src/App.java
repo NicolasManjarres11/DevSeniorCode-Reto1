@@ -57,6 +57,7 @@ public class App {
     public static void menu(){
 
         int option;
+        
 
         System.out.println("\nSimulador de Viaje interplanetario");
         System.out.println("************************************");
@@ -76,7 +77,7 @@ public class App {
                 showStarships(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
                 break;
             case 3:
-                travelSimulation(); 
+                travelSimulation();
                 break;
             case 4:
                 System.out.println("Saliendo del programa...");
@@ -174,6 +175,11 @@ public class App {
 
     //Método de llamado de eventos aleatorios
     public static void randomEvents(int num){
+        
+        //Se puede llamar al método co este parámetro, para que de un numero
+        // random de 1 a 5, de la siguiente manera
+
+        //randomEvents(rnd.nextInt(5)+1);
 
         switch (num) {
             case 1: cosmicRadiationStorm(fuelReserve,oxigenReserve); break;
