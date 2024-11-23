@@ -173,10 +173,71 @@ public class App {
     }
 
     //Método de eventos aleatorios
+    public static void randomEvents(int num){
 
-    public static void event(){
-        
+        switch (num) {
+            case 1: cosmicRadiationStorm(fuelReserve,oxigenReserve); break;
+            case 2: event2(); break;
+            case 3: event3(); break;
+            case 4: event4(); break;
+            case 5: event5(); break;
+            default:
+                System.err.println("Sin evento aleatorio");
+        }
+
     }
+
+    public static void cosmicRadiationStorm(double fuelReserve,double oxigenReserve){
+
+        double oxygen = 4000;
+        double fuel = 4000;
+        var startEvent = true;
+        int option;
+
+        System.out.println("Tormenta de radiación cósmica ");
+            System.out.println("""
+    
+                    Estás pasando cerca de una tormenta de radiación cósmica con un estallido
+                    inesperado de radiación gamma que podría deshabilitar sistemas eletrónicos
+                    y poner en peligro la tripulación. ¿Qué deseas hacer?
+    
+                    1. Habilitar campo eletromagnético que se encuentra en el exterior de la nave.
+                       (Se perderá oxígeno).
+    
+                    2. Contrarestar efectos con las turbinas de la nave
+                        (Se perderá combustible).
+
+                    Ingresa el número de la acción que deseas realizar:
+                    """);
+    
+                    
+
+        do { 
+
+            option =sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    System.out.println("Has habilitado el campo electromagnético de la nave.");
+                    oxigenReserve-=oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    startEvent = false;
+                    break;
+                case 2:
+                    System.out.println("Has utilizado las turbinas a su máximo rendimiento.");
+                    fuelReserve-=fuel;
+                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    startEvent = false;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    break;
+            }
+
+        } while (startEvent);
+
+    }
+    
     public static void event2(){
 
     }
@@ -192,9 +253,7 @@ public class App {
 
     //Llamada a metodos de eventos aleatorios
 
-    public static void randomEvents(){
 
-    }
 
     
 
