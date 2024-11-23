@@ -172,13 +172,13 @@ public class App {
         
     }
 
-    //Método de eventos aleatorios
+    //Método de llamado de eventos aleatorios
     public static void randomEvents(int num){
 
         switch (num) {
             case 1: cosmicRadiationStorm(fuelReserve,oxigenReserve); break;
-            case 2: event2(); break;
-            case 3: event3(); break;
+            case 2: gravitationalInterference(fuelReserve,oxigenReserve); break;
+            case 3: unknownAlienTech(fuelReserve,oxigenReserve); break;
             case 4: event4(); break;
             case 5: event5(); break;
             default:
@@ -186,6 +186,8 @@ public class App {
         }
 
     }
+
+    // Eventos aleatorios
 
     public static void cosmicRadiationStorm(double fuelReserve,double oxigenReserve){
 
@@ -195,20 +197,20 @@ public class App {
         int option;
 
         System.out.println("Tormenta de radiación cósmica ");
-            System.out.println("""
+            System.out.printf("""
     
                     Estás pasando cerca de una tormenta de radiación cósmica con un estallido
                     inesperado de radiación gamma que podría deshabilitar sistemas eletrónicos
                     y poner en peligro la tripulación. ¿Qué deseas hacer?
     
                     1. Habilitar campo eletromagnético que se encuentra en el exterior de la nave.
-                       (Se perderá oxígeno).
+                       (Se perderá (%.2f) litros de oxigeno).
     
                     2. Contrarestar efectos con las turbinas de la nave
-                        (Se perderá combustible).
+                        (Se perderá (%.2f) litros de combustible).
 
                     Ingresa el número de la acción que deseas realizar:
-                    """);
+                    """,oxygen,fuel);
     
                     
 
@@ -237,11 +239,102 @@ public class App {
         } while (startEvent);
 
     }
+
+    public static void gravitationalInterference(double fuelReserve,double oxigenReserve){
+
+        double oxygen = 6750;
+        double fuel = 8400;
+        var startEvent = true;
+        int option;
+
+        System.out.println("Interferencia gravitacional ");
+            System.out.printf("""
     
-    public static void event2(){
+                    La nave se está acercando a un área donde hay un agujero negro, esto podría 
+                    alterar el curso debido a su fuerte influencia gravitacional, dañando así los
+                    sistemas de navegación. ¿Qué deseas hacer?:
+    
+                    1. Reguasdarse en la cámara de seguridad para evitar afecciones por la intensidad gravitacional.
+                        (Se perderá (%.2f) litros de oxigeno).
+    
+                    2. Activar propulsores de emergencia
+                        (Se perderá (%.2f) litros de combustible).
+
+                    Ingresa el número de la acción que deseas realizar:
+                    """,oxygen,fuel);
+
+        do { 
+
+            option =sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    System.out.println("Has ingresado a la cámara de seguridad durante la emergencia.");
+                    oxigenReserve-=oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    startEvent = false;
+                    break;
+                case 2:
+                    System.out.println("Se activaron los propulsores durante la emergencia.");
+                    fuelReserve-=fuel;
+                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    startEvent = false;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    break;
+            }
+
+        } while (startEvent);
 
     }
-    public static void event3(){
+    
+    public static void unknownAlienTech(double fuelReserve,double oxigenReserve){
+
+        double oxygen = 4200;
+        double fuel = 5400;
+        var startEvent = true;
+        int option;
+
+        System.out.println("Encuentro con tecnología alienígena desconocida");
+            System.out.printf("""
+    
+                    La nave ha detectado una señal de estructuras artificiales desconocidas
+                    en el camino y el sistema alerta una amenaza grande. ¿Qué deseas hacer?:
+    
+                    1. Prestar guardia en cada una de las naves, incluyendo las que están inactivas.
+                        (Se perderá (%.2f) litros de oxigeno).
+    
+                    2. Activar sistemas avanzados de defensa durante el trayecto.
+                        (Se perderá (%.2f) litros de combustible).
+
+                    Ingresa el número de la acción que deseas realizar:
+                    """,oxygen,fuel);
+
+        do { 
+
+            option =sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    System.out.println("Se está vigilando todas las áreas de las naves");
+                    oxigenReserve-=oxygen;
+                    System.out.printf("Te queda %.2f de oxigeno",oxigenReserve);
+                    startEvent = false;
+                    break;
+                case 2:
+                    System.out.println("Se han activado los sistemas avanzados de defensa de la nave");
+                    fuelReserve-=fuel;
+                    System.out.printf("Te queda %.2f de oxigeno",fuelReserve);
+                    startEvent = false;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    break;
+            }
+
+        } while (startEvent);
+
 
     }
     public static void event4(){
