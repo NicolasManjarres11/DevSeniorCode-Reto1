@@ -35,6 +35,7 @@ public class App {
     public static int chooseStarship;
     public static double fuelReserve;
     public static double oxigenReserve;
+    public static int passengers;
 
     //Variables lógicas
     static boolean startSimulation = true;
@@ -145,15 +146,25 @@ public class App {
                 System.out.println("Opción inválida. Inténtelo de nuevo.");
                 showStarships();
             } else {
-            System.out.println("Haz elegido la nave: " + starships[option - 1]);
-            sc.nextLine();
-            System.out.print("Presione Enter para confirmar. ");
-            sc.nextLine();
+                System.out.println("Haz elegido la nave: " + starships[option - 1]);
+                sc.nextLine();
+                System.out.print("Presione Enter para confirmar. ");
+                sc.nextLine();
             }
         } while (option < 0 || option > starships.length);
 
         System.out.println("Nave " + starships[option - 1] + " seleccionada correctamente.");
         chooseStarship = option - 1;
+
+        do {
+            System.out.print("Ingresa la cantidad de pasajeros que viajaran: ");
+            passengers = sc.nextInt();
+            if (passengers <= 0) {
+                System.out.println("Cantidad inválida. Inténtelo de nuevo.");
+            } else {
+                System.out.println("Feliz viaje!");
+            }
+        } while (passengers <= 0);
     }
 
     //Duración del viaje
