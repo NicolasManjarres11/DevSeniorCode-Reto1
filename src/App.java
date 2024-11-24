@@ -179,12 +179,14 @@ public class App {
             System.out.println("Distancia: " + distances[choosePlanet] + " millones de kilómetros.");
             System.out.println("Velocidad: " + speed[chooseStarship] + " Mkm/h");
             System.out.println("Pasajeros a bordo: " + passengers);
-            System.out.println("El viaje durará aproximadamente " + travelTime(distances[choosePlanet], speed[chooseStarship]) + " días.");
+            var travelTime = travelTime(distances[choosePlanet], speed[chooseStarship]);
+            System.out.println("El viaje durará aproximadamente " + travelTime + " días.");
             Thread.sleep(2000);
 
             var kilometersPerPercent = distances[choosePlanet] / 100;
             var fuelPerPercent = kilometersPerPercent * 5;
             var oxigenPerPercent = kilometersPerPercent * 2;
+            var timePerPercent = travelTime / 100;
 
             // Simulación de viaje
             for (int i = 0; i <= 100; i++) {
@@ -195,23 +197,38 @@ public class App {
                     System.out.println("\n------Mitad del viaje------\n");
                 } else if (i == 100) {
                     System.out.println("\n------Llegada al destino------\n");
+                    System.out.println("Se ha recorrido el " + i + "% del trayecto.");
+                    System.out.println("Llegada a " + planets[choosePlanet] + " completada.");
+                    System.out.printf("Combustible restante: %.2f galones | Oxigeno restante: %.2f litros\n\n", fuelReserve, oxigenReserve);
+                    break;
                 }
 
                 var travelledKilometers = kilometersPerPercent * i;
                 System.out.println("Se ha recorrido el " + i + "% del trayecto.");
                 System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
-                Thread.sleep(1000);
+                //Thread.sleep(1000);
                 if (rnd.nextInt(30) == rnd.nextInt(30)) {
-                    randomEvents(rnd.nextInt(5) + 1);
+                    //randomEvents(rnd.nextInt(5) + 1);
                 }
+
+                System.out.printf("Tiempo para llegar a destino: %.2f dias.\n", travelTime);
+                travelTime -= timePerPercent;
 
                 System.out.printf("Combustible restante: %.2f galones | Oxigeno restante: %.2f litros\n\n", fuelReserve, oxigenReserve);
                 fuelReserve -= fuelPerPercent;
                 oxigenReserve -= oxigenPerPercent;
 
+                if (fuelReserve <= 0) {
+                    System.out.println("La nave se ha quedado sin combustible, viaje fallido.");
+                    break;
+                } else if (oxigenReserve <= 0) {
+                    System.out.println("La nave se ha quedado sin oxigeno, viaje fallido.");
+                    break;
+                }
+
             }
 
-            System.out.println("Llegada a " + planets[choosePlanet] + " completada.");
+            
 
         } catch (InterruptedException e) { // Manejo de la excepción si el hilo es interrumpido
             System.err.println("El hilo fue interrumpido: " + e.getMessage());
