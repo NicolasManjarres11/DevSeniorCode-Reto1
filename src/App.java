@@ -11,6 +11,8 @@ public class App {
     //Planetas, detalles y descripción
     public static String[] planets = {"Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno"};
     public static double[] distances = {91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0};
+    public static double[] recomendedFuel = {3.7, 8.87, 3.71, 24.79, 10.44, 8.69, 11.15};
+    public static double[] recomendedOxigen = {2.0, 3.5, 2.0, 5.0, 3.0, 2.5, 3.0};
     public static String[] descriptionPlanet = {
         "El planeta más cercano al Sol, un mundo abrasador durante el día y helado por la noche.",
         "Una joya envuelta en nubes tóxicas, con un calor infernal y volcanes activos.",
@@ -24,14 +26,14 @@ public class App {
     //Naves espaciales, detalles y descripción
     public static String[] starships = {"Astra Voyager", "Pioneer Horizon", "Stellar Odyssey", "Cosmos Endeavor",};
     public static double[] speed = {4.0, 5.0, 3.0, 6.0}; //Velocidades en millones de km/h
-
-    public static String[] descriptionStarship = {}; //Pendiente por agregar descripción correspondiente
+    public static int[] maxPassengers = {20, 25, 40, 10}; //Capacidad maxima de pasajeros
 
     //Variables a utilizar
     public static int choosePlanet;
     public static int chooseStarship;
     public static double fuelReserve;
     public static double oxigenReserve;
+    public static int passengers;
 
     //Variables lógicas
     static boolean startSimulation = true;
@@ -63,10 +65,10 @@ public class App {
 
         switch (option) {
             case 1:
-                choosePlanet();  //Sujeto a cambios para agregar metodos de planetas, por ejemplo, "seleccionarPlaneta()""
+                choosePlanet();  
                 break;
             case 2:
-                showStarships(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
+                chooseStarship(); 
                 break;
             case 3:
                 travelSimulation();
@@ -125,7 +127,8 @@ public class App {
     public static void showStarships() {
         System.out.println("\nNaves disponibles: ");
         for (int i = 0; i < starships.length; i++) {
-            System.out.println((i + 1) + ". Nave: " + starships[i] + " | Velocidad: " + speed[i] + " Mkm/h");
+            System.out.println((i + 1) + ". Nave: " + starships[i] + " | Velocidad: " + speed[i] + " Mkm/h | Capacidad: "
+                    + maxPassengers[i] + " pasajeros.");
         }
     }
 
@@ -137,14 +140,29 @@ public class App {
         do {
             System.out.print("\nIngresa el numero de una nave para elegirla: ");
             option = sc.nextInt();
-            System.out.println("Haz elegido la nave: " + starships[option - 1]);
-            sc.nextLine();
-            System.out.print("Presione Enter para confirmar. ");
-            sc.nextLine();
+            if (option < 0 || option > starships.length) {
+                System.out.println("Opción inválida. Inténtelo de nuevo.");
+                showStarships();
+            } else {
+                System.out.println("Haz elegido la nave: " + starships[option - 1]);
+                sc.nextLine();
+                System.out.print("Presione Enter para confirmar. ");
+                sc.nextLine();
+            }
         } while (option < 0 || option > starships.length);
 
         System.out.println("Nave " + starships[option - 1] + " seleccionada correctamente.");
         chooseStarship = option - 1;
+
+        do {
+            System.out.print("Ingresa la cantidad de pasajeros que viajaran: ");
+            passengers = sc.nextInt();
+            if (passengers <= 0) {
+                System.out.println("Cantidad inválida. Inténtelo de nuevo.");
+            } else {
+                System.out.println("Feliz viaje!");
+            }
+        } while (passengers <= 0);
     }
 
     //Duración del viaje
