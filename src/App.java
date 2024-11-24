@@ -28,8 +28,6 @@ public class App {
     public static double[] speed = {4.0, 5.0, 3.0, 6.0}; //Velocidades en millones de km/h
     public static int[] maxPassengers = {20, 25, 40, 10}; //Capacidad maxima de pasajeros
 
-    public static String[] descriptionStarship = {}; //Pendiente por agregar descripción correspondiente
-
     //Variables a utilizar
     public static int choosePlanet;
     public static int chooseStarship;
@@ -67,10 +65,10 @@ public class App {
 
         switch (option) {
             case 1:
-                choosePlanet();  //Sujeto a cambios para agregar metodos de planetas, por ejemplo, "seleccionarPlaneta()""
+                choosePlanet();  
                 break;
             case 2:
-                chooseStarship(); //Sujeto a cambios para agregar metodos de naves, por ejemplo, "seleccionarNave()""
+                chooseStarship(); 
                 break;
             case 3:
                 travelSimulation();
