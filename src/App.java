@@ -172,7 +172,55 @@ public class App {
 
     //Método de simulación de viaje
     public static void travelSimulation() {
+        System.out.println("Iniciando simulación de viaje...");
+        try {
+            // Dormir el hilo por 3 segundos (3000 milisegundos)
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            // Manejo de la excepción si el hilo es interrumpido
+            System.err.println("El hilo fue interrumpido: " + e.getMessage());
+        }
 
+        try {
+            System.out.println("Iniciando viaje a " + planets[choosePlanet] + " con la nave " + starships[chooseStarship]);
+            System.out.println("Distancia: " + distances[choosePlanet] + " millones de kilómetros.");
+            System.out.println("Velocidad: " + speed[chooseStarship] + " Mkm/h");
+            System.out.println("Pasajeros a bordo: " + passengers);
+            System.out.println("El viaje durará aproximadamente " + travelTime(distances[choosePlanet], speed[chooseStarship]) + " días.");
+            Thread.sleep(2000);
+
+            //fuelReserve = recomendedFuel[choosePlanet];
+            //oxigenReserve = recomendedOxigen[choosePlanet];
+            var kilometersPerPercent = distances[choosePlanet] / 100;
+            // Simulación de viaje
+            for (int i = 0; i <= 100; i++) {
+
+                if (i == 0) {
+                    System.out.println("\n------Inicio del viaje------\n");
+                } else if (i == 50) {
+                    System.out.println("\n------Mitad del viaje------\n");
+                } else if (i == 100) {
+                    System.out.println("\n------Llegada al destino------\n");
+                }
+                var travelledKilometers = kilometersPerPercent * i;
+                System.out.println("Se ha recorrido el " + i + "% del trayecto.");
+                System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
+                Thread.sleep(1000);
+                if (rnd.nextInt(20) == rnd.nextInt(20)) {
+                    randomEvents(rnd.nextInt(5) + 1);
+                }
+            }
+
+            System.out.println("Llegada a " + planets[choosePlanet] + " completada.");
+
+        } catch (InterruptedException e) { // Manejo de la excepción si el hilo es interrumpido
+            System.err.println("El hilo fue interrumpido: " + e.getMessage());
+        }
+    }
+
+    public static double travelTime (double distance, double speed) {
+        var speedPerDay = speed * 24;
+        return distance / speedPerDay;
     }
 
     //Método de llamado de eventos aleatorios
