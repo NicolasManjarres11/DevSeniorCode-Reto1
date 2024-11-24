@@ -11,8 +11,7 @@ public class App {
     //Planetas, detalles y descripción
     public static String[] planets = {"Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno"};
     public static double[] distances = {91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0};
-    //public static double[] recomendedFuel = {3.7, 8.87, 3.71, 24.79, 10.44, 8.69, 11.15};
-    //public static double[] recomendedOxigen = {2.0, 3.5, 2.0, 5.0, 3.0, 2.5, 3.0};
+
     public static String[] descriptionPlanet = {
         "El planeta más cercano al Sol, un mundo abrasador durante el día y helado por la noche.",
         "Una joya envuelta en nubes tóxicas, con un calor infernal y volcanes activos.",
