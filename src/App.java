@@ -206,9 +206,9 @@ public class App {
                 var travelledKilometers = kilometersPerPercent * i;
                 System.out.println("Se ha recorrido el " + i + "% del trayecto.");
                 System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
-                //Thread.sleep(1000);
+                Thread.sleep(1000);
                 if (rnd.nextInt(30) == rnd.nextInt(30)) {
-                    //randomEvents(rnd.nextInt(5) + 1);
+                    randomEvents(rnd.nextInt(5) + 1);
                 }
 
                 System.out.printf("Tiempo para llegar a destino: %.2f dias.\n", travelTime);
