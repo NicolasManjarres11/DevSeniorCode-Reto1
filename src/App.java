@@ -183,6 +183,8 @@ public class App {
             Thread.sleep(2000);
 
             var kilometersPerPercent = distances[choosePlanet] / 100;
+            var fuelPerPercent = kilometersPerPercent * 5;
+            var oxigenPerPercent = kilometersPerPercent * 2;
 
             // Simulación de viaje
             for (int i = 0; i <= 100; i++) {
@@ -199,12 +201,14 @@ public class App {
                 System.out.println("Se ha recorrido el " + i + "% del trayecto.");
                 System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
                 Thread.sleep(1000);
-                if (rnd.nextInt(20) == rnd.nextInt(20)) {
+                if (rnd.nextInt(30) == rnd.nextInt(30)) {
                     randomEvents(rnd.nextInt(5) + 1);
                 }
 
-                System.out.println("\nCombustible restante: " + fuelReserve + " galones.");
-                System.out.println("Oxigeno restante: " + oxigenReserve + " litros.\n");
+                System.out.printf("Combustible restante: %.2f galones | Oxigeno restante: %.2f litros\n\n", fuelReserve, oxigenReserve);
+                fuelReserve -= fuelPerPercent;
+                oxigenReserve -= oxigenPerPercent;
+
             }
 
             System.out.println("Llegada a " + planets[choosePlanet] + " completada.");
