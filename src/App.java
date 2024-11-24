@@ -180,7 +180,7 @@ public class App {
             System.out.println("Velocidad: " + speed[chooseStarship] + " Mkm/h");
             System.out.println("Pasajeros a bordo: " + passengers);
             var travelTime = travelTime(distances[choosePlanet], speed[chooseStarship]);
-            System.out.println("El viaje durará aproximadamente " + travelTime + " días.");
+            System.out.printf("El viaje durará aproximadamente %.2f días.", travelTime);
             Thread.sleep(2000);
 
             var kilometersPerPercent = distances[choosePlanet] / 100;
