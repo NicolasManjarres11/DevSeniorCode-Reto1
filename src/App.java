@@ -11,8 +11,8 @@ public class App {
     //Planetas, detalles y descripción
     public static String[] planets = {"Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno"};
     public static double[] distances = {91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0};
-    public static double[] recomendedFuel = {3.7, 8.87, 3.71, 24.79, 10.44, 8.69, 11.15};
-    public static double[] recomendedOxigen = {2.0, 3.5, 2.0, 5.0, 3.0, 2.5, 3.0};
+    //public static double[] recomendedFuel = {3.7, 8.87, 3.71, 24.79, 10.44, 8.69, 11.15};
+    //public static double[] recomendedOxigen = {2.0, 3.5, 2.0, 5.0, 3.0, 2.5, 3.0};
     public static String[] descriptionPlanet = {
         "El planeta más cercano al Sol, un mundo abrasador durante el día y helado por la noche.",
         "Una joya envuelta en nubes tóxicas, con un calor infernal y volcanes activos.",
@@ -165,23 +165,16 @@ public class App {
         } while (passengers <= 0);
     }
 
-    //Duración del viaje
-    public static void travelDuration(double distance, double speed) {
-
-    }
-
     //Método de simulación de viaje
     public static void travelSimulation() {
         System.out.println("Iniciando simulación de viaje...");
-        try {
-            // Dormir el hilo por 3 segundos (3000 milisegundos)
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            // Manejo de la excepción si el hilo es interrumpido
-            System.err.println("El hilo fue interrumpido: " + e.getMessage());
-        }
 
         try {
+        
+            Thread.sleep(3000);
+
+            chooseReserves();            
+
             System.out.println("Iniciando viaje a " + planets[choosePlanet] + " con la nave " + starships[chooseStarship]);
             System.out.println("Distancia: " + distances[choosePlanet] + " millones de kilómetros.");
             System.out.println("Velocidad: " + speed[chooseStarship] + " Mkm/h");
@@ -189,9 +182,8 @@ public class App {
             System.out.println("El viaje durará aproximadamente " + travelTime(distances[choosePlanet], speed[chooseStarship]) + " días.");
             Thread.sleep(2000);
 
-            //fuelReserve = recomendedFuel[choosePlanet];
-            //oxigenReserve = recomendedOxigen[choosePlanet];
             var kilometersPerPercent = distances[choosePlanet] / 100;
+
             // Simulación de viaje
             for (int i = 0; i <= 100; i++) {
 
@@ -202,6 +194,7 @@ public class App {
                 } else if (i == 100) {
                     System.out.println("\n------Llegada al destino------\n");
                 }
+
                 var travelledKilometers = kilometersPerPercent * i;
                 System.out.println("Se ha recorrido el " + i + "% del trayecto.");
                 System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
@@ -209,6 +202,9 @@ public class App {
                 if (rnd.nextInt(20) == rnd.nextInt(20)) {
                     randomEvents(rnd.nextInt(5) + 1);
                 }
+
+                System.out.println("\nCombustible restante: " + fuelReserve + " galones.");
+                System.out.println("Oxigeno restante: " + oxigenReserve + " litros.\n");
             }
 
             System.out.println("Llegada a " + planets[choosePlanet] + " completada.");
@@ -221,6 +217,37 @@ public class App {
     public static double travelTime (double distance, double speed) {
         var speedPerDay = speed * 24;
         return distance / speedPerDay;
+    }
+
+    public static double recomendedFuel(double distance) {
+        var necessaryFuel = distance * 5;
+        return necessaryFuel + (necessaryFuel * 0.2);
+    }
+
+    public static double recomendedOxigen(double distance) {
+        var necessaryOxigen = distance * 2;
+        return necessaryOxigen + (necessaryOxigen * 0.2);
+    }
+
+    public static void chooseReserves() {
+
+        System.out.println("\n------Preparacion de viaje------\n");
+        System.out.println("Para este destino se recomienda llevar: ");
+        System.out.println(recomendedFuel(distances[choosePlanet]) + " galones de cobustible interplanetario.");
+        System.out.println(recomendedOxigen(distances[choosePlanet]) + " litros de oxigeno interplanetario.");
+        System.out.println("¿Deseas llevar la cantidad recomendada? (S/N) : ");
+        sc.nextLine();
+        var option = sc.nextLine().toUpperCase();
+
+        if (option.equals("S")) {
+            fuelReserve = recomendedFuel(distances[choosePlanet]);
+            oxigenReserve = recomendedOxigen(distances[choosePlanet]);
+        } else {
+            System.out.println("Ingresa la cantidad de combustible interplanetario que deseas llevar: ");
+            fuelReserve = sc.nextDouble();
+            System.out.println("Ingresa la cantidad de oxigeno interplanetario que deseas llevar: ");
+            oxigenReserve = sc.nextDouble();
+        }
     }
 
     //Método de llamado de eventos aleatorios
