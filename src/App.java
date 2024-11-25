@@ -301,12 +301,12 @@ public class App {
     // Eventos aleatorios
     public static void cosmicRadiationStorm() {
 
-        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.2;
-        double fuel = recomendedFuel(distances[choosePlanet]) * 0.2;
+        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.07;
+        double fuel = recomendedFuel(distances[choosePlanet]) * 0.07;
         var startEvent = true;
         int option;
 
-        System.out.println("Tormenta de radiación cósmica ");
+        System.out.println("\nTormenta de radiación cósmica ");
         System.out.printf("""
     
                     Estás pasando cerca de una tormenta de radiación cósmica con un estallido
@@ -350,12 +350,12 @@ public class App {
 
     public static void gravitationalInterference() {
 
-        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.37;
-        double fuel = recomendedFuel(distances[choosePlanet]) * 0.37;
+        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.17;
+        double fuel = recomendedFuel(distances[choosePlanet]) * 0.17;
         var startEvent = true;
         int option;
 
-        System.out.println("Interferencia gravitacional ");
+        System.out.println("\nInterferencia gravitacional ");
         System.out.printf("""
     
                     La nave se está acercando a un área donde hay un agujero negro, esto podría 
@@ -399,12 +399,12 @@ public class App {
 
     public static void unknownAlienTech() {
 
-        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.40;
-        double fuel = recomendedFuel(distances[choosePlanet]) * 0.40;
+        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.04;
+        double fuel = recomendedFuel(distances[choosePlanet]) * 0.04;
         var startEvent = true;
         int option;
 
-        System.out.println("Encuentro con tecnología alienígena desconocida");
+        System.out.println("\nEncuentro con tecnología alienígena desconocida");
         System.out.printf("""
     
                     La nave ha detectado una señal de estructuras artificiales desconocidas
@@ -447,12 +447,12 @@ public class App {
 
     public static void systemsFailures() {
 
-        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.17;
-        double fuel = recomendedFuel(distances[choosePlanet]) * 0.17;
+        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.09;
+        double fuel = recomendedFuel(distances[choosePlanet]) * 0.09;
         var startEvent = true;
         int option;
 
-        System.out.println("Fallos en los sistemas de soporte vital");
+        System.out.println("\nFallos en los sistemas de soporte vital");
         System.out.printf("""
     
                     Se ha detectado un mal funcionamiento en sistemas críticos como el
@@ -495,12 +495,12 @@ public class App {
 
     public static void collision() {
 
-        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.44;
-        double fuel = recomendedFuel(distances[choosePlanet]) * 0.44;
+        double oxygen = recomendedOxigen(distances[choosePlanet]) * 0.2;
+        double fuel = recomendedFuel(distances[choosePlanet]) * 0.2;
         var startEvent = true;
         int option;
 
-        System.out.println("Colisión con meteoritos y/o basura espacial");
+        System.out.println("\nColisión con meteoritos y/o basura espacial");
         System.out.printf("""
     
                     A pesar de los escudos, la nave ha recibido un impacto con un objeto
