@@ -27,8 +27,8 @@ public class App {
     public static int[] maxPassengers = { 20, 25, 40, 10 }; // Capacidad maxima de pasajeros
 
     // Variables a utilizar
-    public static int choosedPlanet;
-    public static int choosedStarship;
+    public static int chosenPlanet;
+    public static int chosenStarship;
     public static double fuelReserve;
     public static double oxigenReserve;
     public static int passengers;
@@ -122,7 +122,7 @@ public class App {
         } while (option == 0);
 
         System.out.println("Planeta " + planets[option - 1] + " seleccionado correctamente.");
-        choosedPlanet = option - 1;
+        chosenPlanet = option - 1;
 
     }
 
@@ -160,7 +160,7 @@ public class App {
         } while (option < 0 || option > starships.length);
 
         System.out.println("Nave " + starships[option - 1] + " seleccionada correctamente.");
-        choosedStarship = option - 1;
+        chosenStarship = option - 1;
 
         // Ingreso de pasajeros
         do {
@@ -193,17 +193,17 @@ public class App {
 
             chooseReserves(); 
 
-            System.out.println("Iniciando viaje a " + planets[choosedPlanet] + " con la nave " + starships[choosedStarship]);
-            System.out.println("Distancia: " + distances[choosedPlanet] + " millones de kilómetros.");
-            System.out.println("Velocidad: " + speed[choosedStarship] + " Mkm/h");
+            System.out.println("\nIniciando viaje a " + planets[chosenPlanet] + " con la nave " + starships[chosenStarship]);
+            System.out.println("Distancia: " + distances[chosenPlanet] + " millones de kilómetros.");
+            System.out.println("Velocidad: " + speed[chosenStarship] + " Mkm/h");
             System.out.println("Pasajeros a bordo: " + passengers);
-            var travelTime = travelTime(distances[choosedPlanet], speed[choosedStarship]);
+            var travelTime = travelTime(distances[chosenPlanet], speed[chosenStarship]);
             System.out.printf("El viaje durará aproximadamente %.2f días.\n", travelTime);
 
             Thread.sleep(2000);// Se simula un tiempo de espera de 2 segundos
 
             // Variables necesarias para los calculos del viaje
-            var kilometersPerPercent = distances[choosedPlanet] / 100;
+            var kilometersPerPercent = distances[chosenPlanet] / 100;
             var fuelPerPercent = kilometersPerPercent * 5;
             var oxigenPerPercent = kilometersPerPercent * 2;
             var timePerPercent = travelTime / 100;
@@ -219,7 +219,7 @@ public class App {
                 } else if (i == 100) {
                     System.out.println("\n------Llegada al destino------\n");
                     System.out.println("Se ha recorrido el " + i + "% del trayecto.");
-                    System.out.println("Llegada a " + planets[choosedPlanet] + " completada.");
+                    System.out.println("Llegada a " + planets[chosenPlanet] + " completada.");
                     System.out.printf("Combustible restante: %.2f galones | Oxigeno restante: %.2f litros\n\n",
                             fuelReserve, oxigenReserve);
                     break;
@@ -281,15 +281,15 @@ public class App {
 
         System.out.println("\n------Preparacion de viaje------\n");
         System.out.println("Para este destino se recomienda llevar: ");
-        System.out.println(recomendedFuel(distances[choosedPlanet]) + " galones de combustible interplanetario.");
-        System.out.println(recomendedOxigen(distances[choosedPlanet]) + " litros de oxigeno interplanetario.");
+        System.out.println(recomendedFuel(distances[chosenPlanet]) + " galones de combustible interplanetario.");
+        System.out.println(recomendedOxigen(distances[chosenPlanet]) + " litros de oxigeno interplanetario.");
         System.out.print("¿Deseas llevar la cantidad recomendada? (S/N) : ");
         sc.nextLine();
         var option = sc.nextLine().toUpperCase();
 
         if (option.equals("S")) {
-            fuelReserve = recomendedFuel(distances[choosedPlanet]);
-            oxigenReserve = recomendedOxigen(distances[choosedPlanet]);
+            fuelReserve = recomendedFuel(distances[chosenPlanet]);
+            oxigenReserve = recomendedOxigen(distances[chosenPlanet]);
         } else {
             System.out.println("Ingresa la cantidad de combustible interplanetario que deseas llevar: ");
             fuelReserve = sc.nextDouble();
@@ -326,8 +326,8 @@ public class App {
     // Eventos aleatorios
     public static void cosmicRadiationStorm() {
 
-        double oxygen = recomendedOxigen(distances[choosedPlanet]) * 0.07;
-        double fuel = recomendedFuel(distances[choosedPlanet]) * 0.07;
+        double oxygen = recomendedOxigen(distances[chosenPlanet]) * 0.07;
+        double fuel = recomendedFuel(distances[chosenPlanet]) * 0.07;
         var startEvent = true;
         int option;
 
@@ -375,8 +375,8 @@ public class App {
 
     public static void gravitationalInterference() {
 
-        double oxygen = recomendedOxigen(distances[choosedPlanet]) * 0.17;
-        double fuel = recomendedFuel(distances[choosedPlanet]) * 0.17;
+        double oxygen = recomendedOxigen(distances[chosenPlanet]) * 0.17;
+        double fuel = recomendedFuel(distances[chosenPlanet]) * 0.17;
         var startEvent = true;
         int option;
 
@@ -424,8 +424,8 @@ public class App {
 
     public static void unknownAlienTech() {
 
-        double oxygen = recomendedOxigen(distances[choosedPlanet]) * 0.04;
-        double fuel = recomendedFuel(distances[choosedPlanet]) * 0.04;
+        double oxygen = recomendedOxigen(distances[chosenPlanet]) * 0.04;
+        double fuel = recomendedFuel(distances[chosenPlanet]) * 0.04;
         var startEvent = true;
         int option;
 
@@ -472,8 +472,8 @@ public class App {
 
     public static void systemsFailures() {
 
-        double oxygen = recomendedOxigen(distances[choosedPlanet]) * 0.09;
-        double fuel = recomendedFuel(distances[choosedPlanet]) * 0.09;
+        double oxygen = recomendedOxigen(distances[chosenPlanet]) * 0.09;
+        double fuel = recomendedFuel(distances[chosenPlanet]) * 0.09;
         var startEvent = true;
         int option;
 
@@ -520,8 +520,8 @@ public class App {
 
     public static void collision() {
 
-        double oxygen = recomendedOxigen(distances[choosedPlanet]) * 0.2;
-        double fuel = recomendedFuel(distances[choosedPlanet]) * 0.2;
+        double oxygen = recomendedOxigen(distances[chosenPlanet]) * 0.2;
+        double fuel = recomendedFuel(distances[chosenPlanet]) * 0.2;
         var startEvent = true;
         int option;
 
