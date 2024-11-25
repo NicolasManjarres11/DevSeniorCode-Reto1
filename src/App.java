@@ -11,7 +11,6 @@ public class App {
     // Planetas, detalles y descripción
     public static String[] planets = { "Mercurio", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno" };
     public static double[] distances = { 91.0, 41.0, 78.0, 628.0, 1275.0, 2723.0, 4351.0 };
-
     public static String[] descriptionPlanet = {
             "El planeta más cercano al Sol, un mundo abrasador durante el día y helado por la noche.",
             "Una joya envuelta en nubes tóxicas, con un calor infernal y volcanes activos.",
@@ -22,7 +21,7 @@ public class App {
             "El reino del viento y las tormentas más rápidas, con un hermoso tono azul profundo."
     };
 
-    // Naves espaciales, detalles y descripción
+    // Naves espaciales y detalles
     public static String[] starships = { "Astra Voyager", "Pioneer Horizon", "Stellar Odyssey", "Cosmos Endeavor", };
     public static double[] speed = { 4.0, 5.0, 3.0, 6.0 }; // Velocidades en millones de km/h
     public static int[] maxPassengers = { 20, 25, 40, 10 }; // Capacidad maxima de pasajeros
@@ -34,13 +33,15 @@ public class App {
     public static double oxigenReserve;
     public static int passengers;
 
-    // Variables lógicas
+    // Variables logicas (booleanas)
     static boolean confirmChoosedStarship = false;
     static boolean confirmChoosedPlanet = false;
+
 
     public static void main(String[] args) {
         menu();
     }
+
 
     // Menú de opciones
     public static void menu() {
@@ -48,13 +49,19 @@ public class App {
         do {
             int option;
 
-            System.out.println("\nSimulador de Viaje interplanetario");
-            System.out.println("************************************");
-            System.out.println("\nSelecciona una de las siguientes opciones");
+            
+            System.out.println("""
+
+                |========================================|
+                |   Simulador de Viaje interplanetario   |
+                |========================================|
+                """);
+            System.out.println("Selecciona una de las siguientes opciones");
             System.out.println("\n1. Seleccionar un planeta de destino.");
             System.out.println("2. Seleccionar una nave espacial.");
             System.out.println("3. Iniciar la simulación de viaje");
             System.out.println("4. Salir del programa.");
+            System.out.print("\nIngrese el número de la opción deseada: ");
             option = sc.nextInt();
             System.out.println("");
 
@@ -70,7 +77,7 @@ public class App {
                     break;
                 case 4:
                     System.out.println("Saliendo del programa...");
-                    System.exit(0);
+                    System.exit(0); // Cierra el programa
                     break;
                 default:
                     System.err.println("Opción inválida. Inténtelo de nuevo");
@@ -78,15 +85,15 @@ public class App {
         } while (true);
     }
 
-    // Print y métodos de planetas
+    // Metodo de impresion de planetas
     public static void showPlanets() {
         System.out.println("Planetas disponibles: ");
         for (int i = 0; i < planets.length; i++) {
-            System.out.println(
-                    (i + 1) + ". " + planets[i] + " | Distancia: " + distances[i] + " millones de kilómetros.");
+            System.out.println((i + 1) + ". " + planets[i] + " | Distancia: " + distances[i] + " millones de kilómetros.");
         }
     }
 
+    // Metodo de selección de planeta
     public static void choosePlanet() {
 
         showPlanets();
@@ -263,7 +270,7 @@ public class App {
         System.out.println("Para este destino se recomienda llevar: ");
         System.out.println(recomendedFuel(distances[choosedPlanet]) + " galones de combustible interplanetario.");
         System.out.println(recomendedOxigen(distances[choosedPlanet]) + " litros de oxigeno interplanetario.");
-        System.out.println("¿Deseas llevar la cantidad recomendada? (S/N) : ");
+        System.out.print("¿Deseas llevar la cantidad recomendada? (S/N) : ");
         sc.nextLine();
         var option = sc.nextLine().toUpperCase();
 
