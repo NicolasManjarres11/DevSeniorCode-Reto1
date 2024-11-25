@@ -38,18 +38,13 @@ public class App {
     static boolean startSimulation = true;
 
     public static void main(String[] args) {
-
-        do {
-            menu();
-        } while (startSimulation);
-
-        sc.close();
-
+        menu();
     }
 
     //Menú de opciones
     public static void menu() {
 
+        do {
         int option;
 
         System.out.println("\nSimulador de Viaje interplanetario");
@@ -74,12 +69,13 @@ public class App {
                 break;
             case 4:
                 System.out.println("Saliendo del programa...");
-                startSimulation = false;
+                //startSimulation = false;
+                System.exit(0);
                 break;
             default:
                 System.err.println("Opción inválida. Inténtelo de nuevo");
         }
-
+        } while (true);
     }
 
     //Print y métodos de planetas
