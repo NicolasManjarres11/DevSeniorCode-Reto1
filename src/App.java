@@ -34,8 +34,8 @@ public class App {
     public static int passengers;
 
     // Variables logicas (booleanas)
-    static boolean confirmChoosedStarship = false;
-    static boolean confirmChoosedPlanet = false;
+    static boolean confirmChoosedStarship;
+    static boolean confirmChoosedPlanet;
 
 
     public static void main(String[] args) {
@@ -111,7 +111,6 @@ public class App {
                 showPlanets();
 
             } else {
-
                 System.out.println("\nHaz seleccionado el planeta: " + planets[option - 1]);
                 System.out.println(descriptionPlanet[option - 1]);
                 sc.nextLine();
@@ -127,7 +126,7 @@ public class App {
 
     }
 
-    // Print y métodos de naves
+    // Metodo de impresion de naves
     public static void showStarships() {
         System.out.println("\nNaves disponibles: ");
         for (int i = 0; i < starships.length; i++) {
@@ -136,7 +135,9 @@ public class App {
         }
     }
 
+    // Metodo de seleccion de nave
     public static void chooseStarship() {
+        
         showStarships();
 
         int option;
@@ -155,11 +156,13 @@ public class App {
                 sc.nextLine();
                 confirmChoosedStarship = true;
             }
+
         } while (option < 0 || option > starships.length);
 
         System.out.println("Nave " + starships[option - 1] + " seleccionada correctamente.");
         choosedStarship = option - 1;
 
+        // Ingreso de pasajeros
         do {
             System.out.print("Ingresa la cantidad de pasajeros que viajaran: ");
             passengers = sc.nextInt();
@@ -168,41 +171,47 @@ public class App {
             } else {
                 System.out.println("Feliz viaje!");
             }
+
         } while (passengers <= 0);
     }
 
-    // Método de simulación de viaje
+    // Método de simulacion de viaje
     public static void travelSimulation() {
+
+        // Verificacion de seleccion de planeta y nave
         if (confirmChoosedPlanet == false || confirmChoosedStarship == false) {
-            System.err.println("Debes seleccionar un planeta y una nave para iniciar el viaje.");
+            System.err.println("Error: Debes seleccionar un planeta y una nave para iniciar el viaje.");
             return;
         }
 
         System.out.println("Iniciando simulación de viaje...");
 
+        // Se incluye bloque try/catch para manejar la excepción de interrupción del hilo tal como se indico en clase
         try {
 
-            Thread.sleep(3000);
+            Thread.sleep(3000); // Se simula un tiempo de espera de 3 segundos
 
-            chooseReserves();
+            chooseReserves(); 
 
-            System.out.println(
-                    "Iniciando viaje a " + planets[choosedPlanet] + " con la nave " + starships[choosedStarship]);
+            System.out.println("Iniciando viaje a " + planets[choosedPlanet] + " con la nave " + starships[choosedStarship]);
             System.out.println("Distancia: " + distances[choosedPlanet] + " millones de kilómetros.");
             System.out.println("Velocidad: " + speed[choosedStarship] + " Mkm/h");
             System.out.println("Pasajeros a bordo: " + passengers);
             var travelTime = travelTime(distances[choosedPlanet], speed[choosedStarship]);
             System.out.printf("El viaje durará aproximadamente %.2f días.\n", travelTime);
-            Thread.sleep(2000);
 
+            Thread.sleep(2000);// Se simula un tiempo de espera de 2 segundos
+
+            // Variables necesarias para los calculos del viaje
             var kilometersPerPercent = distances[choosedPlanet] / 100;
             var fuelPerPercent = kilometersPerPercent * 5;
             var oxigenPerPercent = kilometersPerPercent * 2;
             var timePerPercent = travelTime / 100;
 
-            // Simulación de viaje
+            // Simulacion de viaje
             for (int i = 0; i <= 100; i++) {
 
+                // Etapas del viaje
                 if (i == 0) {
                     System.out.println("\n------Inicio del viaje------\n");
                 } else if (i == 50) {
@@ -216,6 +225,7 @@ public class App {
                     break;
                 }
 
+                // Calculos de viaje
                 var travelledKilometers = kilometersPerPercent * i;
                 System.out.println("Se ha recorrido el " + i + "% del trayecto.");
                 System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
@@ -232,6 +242,7 @@ public class App {
                 fuelReserve -= fuelPerPercent;
                 oxigenReserve -= oxigenPerPercent;
 
+                // Verificacion de combustible y oxigeno
                 if (fuelReserve <= 0) {
                     System.out.println("La nave se ha quedado sin combustible, viaje fallido.");
                     break;
@@ -240,15 +251,16 @@ public class App {
                     break;
                 }
 
-                Thread.sleep(1000);
+                Thread.sleep(1000); // Se simula un tiempo de espera de 1 segundo
 
             }
 
-        } catch (InterruptedException e) { // Manejo de la excepción si el hilo es interrumpido
+        } catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
             System.err.println("El hilo fue interrumpido: " + e.getMessage());
         }
     }
 
+    // Métodos de calculos de tiempo de viaje y recursos
     public static double travelTime(double distance, double speed) {
         var speedPerDay = speed * 24;
         return distance / speedPerDay;
@@ -264,6 +276,7 @@ public class App {
         return necessaryOxigen + (necessaryOxigen * 0.2);
     }
 
+    // Método de eleccion de recursos
     public static void chooseReserves() {
 
         System.out.println("\n------Preparacion de viaje------\n");
@@ -288,9 +301,6 @@ public class App {
     // Método de llamado de eventos aleatorios
     public static void randomEvents(int num) {
 
-        // Se puede llamar al método co este parámetro, para que de un numero
-        // random de 1 a 5, de la siguiente manera
-        // randomEvents(rnd.nextInt(5)+1);
         switch (num) {
             case 1:
                 cosmicRadiationStorm();
