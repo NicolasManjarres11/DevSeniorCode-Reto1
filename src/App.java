@@ -34,8 +34,8 @@ public class App {
     public static int passengers;
 
     // Variables logicas (booleanas)
-    static boolean confirmChoosedStarship;
-    static boolean confirmChoosedPlanet;
+    static boolean confirmChosenStarship;
+    static boolean confirmChosenPlanet;
 
 
     public static void main(String[] args) {
@@ -116,7 +116,7 @@ public class App {
                 sc.nextLine();
                 System.out.println("Presione Enter para confirmar.");
                 sc.nextLine();
-                confirmChoosedPlanet = true;
+                confirmChosenPlanet = true;
             }
 
         } while (option == 0);
@@ -154,7 +154,7 @@ public class App {
                 sc.nextLine();
                 System.out.print("Presione Enter para confirmar. ");
                 sc.nextLine();
-                confirmChoosedStarship = true;
+                confirmChosenStarship = true;
             }
 
         } while (option < 0 || option > starships.length);
@@ -179,7 +179,7 @@ public class App {
     public static void travelSimulation() {
 
         // Verificacion de seleccion de planeta y nave
-        if (confirmChoosedPlanet == false || confirmChoosedStarship == false) {
+        if (confirmChosenPlanet == false || confirmChosenStarship == false) {
             System.err.println("Error: Debes seleccionar un planeta y una nave para iniciar el viaje.");
             return;
         }
