@@ -101,7 +101,7 @@ public class App {
         int option;
 
         do {
-            System.out.println("Ingresa el número del planeta que deseas elegir: ");
+            System.out.print("Ingresa el número del planeta que deseas elegir: ");
             option = sc.nextInt();
 
             if (!(option <= planets.length)) {
