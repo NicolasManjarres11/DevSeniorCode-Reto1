@@ -11,7 +11,9 @@ Este programa simula un viaje interplanetario a los planetas de nuestro sistema 
 
 ## Requisitos del Sistema
 Lenguaje de programación: Java (versión 21).
+
 Entorno de ejecución: JDK (Java Development Kit).
+
 Dependencias: Ninguna.
 
 ## Instrucciones de Instalación 👩‍💻
