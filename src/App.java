@@ -331,6 +331,8 @@ public class App {
         var startEvent = true;
         int option;
 
+        try {
+
         System.out.println("\nTormenta de radiación cósmica ");
         System.out.printf("""
 
@@ -369,7 +371,13 @@ public class App {
                     break;
             }
 
+            Thread.sleep(3000);
+
         } while (startEvent);
+
+    } catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
+        System.err.println(e.getMessage());
+    }
 
     }
 
@@ -379,6 +387,8 @@ public class App {
         double fuel = recomendedFuel(distances[chosenPlanet]) * 0.17;
         var startEvent = true;
         int option;
+
+        try{
 
         System.out.println("\nInterferencia gravitacional ");
         System.out.printf("""
@@ -418,7 +428,13 @@ public class App {
                     break;
             }
 
+            Thread.sleep(3000);
+
         } while (startEvent);
+
+    } catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
+        System.err.println(e.getMessage());
+    }
 
     }
 
@@ -428,6 +444,8 @@ public class App {
         double fuel = recomendedFuel(distances[chosenPlanet]) * 0.04;
         var startEvent = true;
         int option;
+
+        try{
 
         System.out.println("\nEncuentro con tecnología alienígena desconocida");
         System.out.printf("""
@@ -466,7 +484,13 @@ public class App {
                     break;
             }
 
+            Thread.sleep(3000);
+
         } while (startEvent);
+
+    } catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
+        System.err.println(e.getMessage());
+    }
 
     }
 
@@ -476,6 +500,8 @@ public class App {
         double fuel = recomendedFuel(distances[chosenPlanet]) * 0.09;
         var startEvent = true;
         int option;
+
+        try{
 
         System.out.println("\nFallos en los sistemas de soporte vital");
         System.out.printf("""
@@ -515,7 +541,13 @@ public class App {
                     break;
             }
 
+            Thread.sleep(3000);
+
         } while (startEvent);
+
+    } catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
+        System.err.println(e.getMessage());
+    }
     }
 
     public static void collision() {
@@ -524,6 +556,8 @@ public class App {
         double fuel = recomendedFuel(distances[chosenPlanet]) * 0.2;
         var startEvent = true;
         int option;
+
+        try {
 
         System.out.println("\nColisión con meteoritos y/o basura espacial");
         System.out.printf(
@@ -564,7 +598,13 @@ public class App {
                     break;
             }
 
+            Thread.sleep(3000);
+
         } while (startEvent);
+
+    } catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
+        System.err.println(e.getMessage());
+    }
 
     }
 
