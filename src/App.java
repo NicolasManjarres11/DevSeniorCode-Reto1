@@ -56,10 +56,10 @@ public class App {
                 |   Simulador de Viaje interplanetario   |
                 |========================================|
                 """);
-            System.out.println("Selecciona una de las siguientes opciones");
+            System.out.println("Selecciona una de las siguientes opciones:");
             System.out.println("\n1. Seleccionar un planeta de destino.");
             System.out.println("2. Seleccionar una nave espacial.");
-            System.out.println("3. Iniciar la simulación de viaje");
+            System.out.println("3. Iniciar la simulación de viaje.");
             System.out.println("4. Salir del programa.");
             System.out.print("\nIngrese el número de la opción deseada: ");
             option = sc.nextInt();
@@ -341,41 +341,42 @@ public class App {
         var startEvent = true;
         int option;
 
-        System.out.println("\nTormenta de radiación cósmica ");
+        System.out.println("\nTormenta de radiacion cosmica ");
         System.out.printf("""
 
-                Estás pasando cerca de una tormenta de radiación cósmica con un estallido
-                inesperado de radiación gamma que podría deshabilitar sistemas eletrónicos
-                y poner en peligro la tripulación. ¿Qué deseas hacer?
+                Estas pasando cerca de una tormenta de radiacion cosmica con un estallido
+                inesperado de radiacion gamma que podria deshabilitar sistemas eletronicos
+                y poner en peligro la tripulacion. ¿Que deseas hacer?
 
-                1. Habilitar campo eletromagnético que se encuentra en el exterior de la nave.
-                    (Se perderá (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
+                1. Habilitar campo eletromagnetico que se encuentra en el exterior de la nave.
+                    (Se perdera (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
 
                 2. Contrarestar efectos con las turbinas de la nave
-                    (Se perderá (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
+                    (Se perdera (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
 
-                Ingresa el número de la acción que deseas realizar:
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
 
+            System.out.print("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
+
             sc.nextLine();
             switch (option) {
                 case 1:
-                    System.out.println("Has habilitado el campo electromagnético de la nave.");
+                    System.out.println("Has habilitado el campo electromagnetico de la nave.");
                     oxigenReserve -= oxygen;
-                    System.out.printf("Te queda %.2f litros de oxigeno", oxigenReserve);
+                    System.out.printf("Te queda %.2f litros de oxigeno.", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
-                    System.out.println("Has utilizado las turbinas a su máximo rendimiento.");
+                    System.out.println("Has utilizado las turbinas a su maximo rendimiento.");
                     fuelReserve -= fuel;
-                    System.out.printf("Te queda %.2f galones de combustible", fuelReserve);
+                    System.out.printf("Te queda %.2f galones de combustible.", fuelReserve);
                     startEvent = false;
                     break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    System.out.println("Opcion inválida. Intentelo de nuevo.");
                     break;
             }
 
@@ -393,38 +394,38 @@ public class App {
         System.out.println("\nInterferencia gravitacional ");
         System.out.printf("""
 
-                La nave se está acercando a un área donde hay un agujero negro, esto podría
-                alterar el curso debido a su fuerte influencia gravitacional, dañando así los
-                sistemas de navegación. ¿Qué deseas hacer?:
+                La nave se esta acercando a un area donde hay un agujero negro, esto podria
+                alterar el curso debido a su fuerte influencia gravitacional, dañando asi los
+                sistemas de navegacion. ¿Que deseas hacer?:
 
-                1. Reguasdarse en la cámara de seguridad para evitar afecciones por la intensidad gravitacional.
-                    (Se perderá (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
+                1. Reguasdarse en la camara de seguridad para evitar afecciones por la intensidad gravitacional.
+                    (Se perdera (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
 
                 2. Activar propulsores de emergencia
-                    (Se perderá (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
+                    (Se perdera (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
 
-                Ingresa el número de la acción que deseas realizar:
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-
+            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
+
             sc.nextLine();
             switch (option) {
                 case 1:
-                    System.out.println("Has ingresado a la cámara de seguridad durante la emergencia.");
+                    System.out.println("Has ingresado a la camara de seguridad durante la emergencia.");
                     oxigenReserve -= oxygen;
-                    System.out.printf("Te queda %.2f litros de oxigeno", oxigenReserve);
+                    System.out.printf("Te queda %.2f litros de oxigeno.", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
                     System.out.println("Se activaron los propulsores durante la emergencia.");
                     fuelReserve -= fuel;
-                    System.out.printf("Te queda %.2f galones de combustible", fuelReserve);
+                    System.out.printf("Te queda %.2f galones de combustible.", fuelReserve);
                     startEvent = false;
                     break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    System.out.println("Opcion invalida. Intentelo de nuevo.");
                     break;
             }
 
@@ -439,40 +440,39 @@ public class App {
         var startEvent = true;
         int option;
 
-        System.out.println("\nEncuentro con tecnología alienígena desconocida");
+        System.out.println("\nEncuentro con tecnologia alienígena desconocida");
         System.out.printf("""
 
                 La nave ha detectado una señal de estructuras artificiales desconocidas
-                en el camino y el sistema alerta una amenaza grande. ¿Qué deseas hacer?:
+                en el camino y el sistema alerta una amenaza grande. ¿Que deseas hacer?:
 
-                1. Prestar guardia en cada una de las naves, incluyendo las que están inactivas.
-                    (Se perderá (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
+                1. Prestar guardia en cada una de las naves, incluyendo las que estan inactivas.
+                    (Se perdera (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
 
                 2. Activar sistemas avanzados de defensa durante el trayecto.
-                    (Se perderá (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
+                    (Se perdera (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
 
-                Ingresa el número de la acción que deseas realizar:
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-
+            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
-                    System.out.println("Se está vigilando todas las áreas de las naves");
+                    System.out.println("Se esta vigilando todas las areas de las naves.");
                     oxigenReserve -= oxygen;
-                    System.out.printf("Te queda %.2f litros de oxigeno", oxigenReserve);
+                    System.out.printf("Te queda %.2f litros de oxigeno.", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
-                    System.out.println("Se han activado los sistemas avanzados de defensa de la nave");
+                    System.out.println("Se han activado los sistemas avanzados de defensa de la nave.");
                     fuelReserve -= fuel;
-                    System.out.printf("Te queda %.2f galones de combustible", fuelReserve);
+                    System.out.printf("Te queda %.2f galones de combustible.", fuelReserve);
                     startEvent = false;
                     break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    System.out.println("Opcion invalida. Intentelo de nuevo.");
                     break;
             }
 
@@ -490,38 +490,38 @@ public class App {
         System.out.println("\nFallos en los sistemas de soporte vital");
         System.out.printf("""
 
-                Se ha detectado un mal funcionamiento en sistemas críticos como el
-                reclicado de aire, administración de combustible y otras fallas
-                más. ¿Qué deseas hacer?:
+                Se ha detectado un mal funcionamiento en sistemas criticos como el
+                reclicado de aire, administracion de combustible y otras fallas
+                mas. ¿Que deseas hacer?:
 
                 1. Desactivar los mecanismos y activar los mecanismos de respaldo.
-                    (Se perderá (%.2f) litros de oxigeno).-> Te quedan %.2f litros de oxigeno.
+                    (Se perdera (%.2f) litros de oxigeno).-> Te quedan %.2f litros de oxigeno.
 
-                2. Utilizar uno de los módulos inteligentes de la nave para suplir esos sistemas.
-                    (Se perderá (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
+                2. Utilizar uno de los modulos inteligentes de la nave para suplir esos sistemas.
+                    (Se perdera (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
 
-                Ingresa el número de la acción que deseas realizar:
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-
+            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
+
             sc.nextLine();
             switch (option) {
                 case 1:
-                    System.out.println("Se activaron mecanismos de respaldos");
+                    System.out.println("Se activaron mecanismos de respaldo.");
                     oxigenReserve -= oxygen;
-                    System.out.printf("Te queda %.2f litros de oxigeno", oxigenReserve);
+                    System.out.printf("Te queda %.2f litros de oxigeno.", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
-                    System.out.println("Se han activado un módulo inteligente de la nave");
+                    System.out.println("Se han activado un modulo inteligente de la nave.");
                     fuelReserve -= fuel;
-                    System.out.printf("Te queda %.2f galones de combustible", fuelReserve);
+                    System.out.printf("Te queda %.2f galones de combustible.", fuelReserve);
                     startEvent = false;
                     break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    System.out.println("Opcion invalida. Intentelo de nuevo.");
                     break;
             }
 
@@ -535,42 +535,42 @@ public class App {
         var startEvent = true;
         int option;
 
-        System.out.println("\nColisión con meteoritos y/o basura espacial");
+        System.out.println("\nColision con meteoritos y/o basura espacial");
         System.out.printf(
                 """
 
                         A pesar de los escudos, la nave ha recibido un impacto con un objeto
-                        a alta velocidad, lo cual ha perforado el casco y se requieren reparaciones inmediatas. ¿Qué deseas hacer?:
+                        a alta velocidad, lo cual ha perforado el casco y se requieren reparaciones inmediatas. ¿Que deseas hacer?:
 
                         1. Detener el trayecto, revisar el impacto y repararlo.
-                            (Se perderá (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
+                            (Se perdera (%.2f) litros de oxigeno). -> Te quedan %.2f litros de oxigeno.
 
                         2. Se desprenderá módulo afectado de la nave, se requiere utilizar combustible para hacerlo.
-                            (Se perderá (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
+                            (Se perdera (%.2f) galones de combustible). -> Te quedan %.2f galones de combustible.
 
-                        Ingresa el número de la acción que deseas realizar:
                         """,
                 oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-
+            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
+
             sc.nextLine();
             switch (option) {
                 case 1:
-                    System.out.println("Se realizó la reparación del área afectada.");
+                    System.out.println("Se realizo la reparación del area afectada.");
                     oxigenReserve -= oxygen;
-                    System.out.printf("Te queda %.2f litros de oxigeno", oxigenReserve);
+                    System.out.printf("Te queda %.2f litros de oxigeno.", oxigenReserve);
                     startEvent = false;
                     break;
                 case 2:
-                    System.out.println("Se ha retirado módulo afectado");
+                    System.out.println("Se ha retirado modulo afectado.");
                     fuelReserve -= fuel;
-                    System.out.printf("Te queda %.2f galones de combustible", fuelReserve);
+                    System.out.printf("Te queda %.2f galones de combustible.", fuelReserve);
                     startEvent = false;
                     break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo");
+                    System.out.println("Opcion invalida. Intentelo de nuevo.");
                     break;
             }
 
