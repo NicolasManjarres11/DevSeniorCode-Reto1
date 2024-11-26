@@ -292,10 +292,19 @@ public class App {
             fuelReserve = recomendedFuel(distances[chosenPlanet]);
             oxigenReserve = recomendedOxigen(distances[chosenPlanet]);
         } else {
-            System.out.println("Ingresa la cantidad de combustible interplanetario que deseas llevar: ");
-            fuelReserve = sc.nextDouble();
-            System.out.println("Ingresa la cantidad de oxigeno interplanetario que deseas llevar: ");
-            oxigenReserve = sc.nextDouble();
+            do {
+                System.out.print("Ingresa la cantidad de combustible interplanetario que deseas llevar: ");
+                fuelReserve = sc.nextDouble();
+                System.out.print("Ingresa la cantidad de oxigeno interplanetario que deseas llevar: ");
+                oxigenReserve = sc.nextDouble();
+
+                if (fuelReserve <= 0 || oxigenReserve <= 0) {
+                    System.out.println("Cantidad de recursos invalida. Intentelo de nuevo.");
+                } else {
+                    System.out.println("Recursos cargados exitosamente.");
+                }
+
+            } while (fuelReserve <= 0 || oxigenReserve <= 0);
         }
     }
 
