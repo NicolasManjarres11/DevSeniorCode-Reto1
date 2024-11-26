@@ -231,12 +231,8 @@ public class App {
                 System.out.println("Recorriendo " + travelledKilometers + " millones de kilómetros...");
 
                 if (rnd.nextInt(30) == rnd.nextInt(30)) {
-                    try {
-                        randomEvents(rnd.nextInt(5) + 1);
-                        Thread.sleep(3000);
-                    }  catch (InterruptedException e) { // Manejo de la excepcion si el hilo es interrumpido
-                        System.err.println("El hilo fue interrumpido: " + e.getMessage());
-                    }
+                    randomEvents(rnd.nextInt(5) + 1);
+                    Thread.sleep(3000);
                 }
 
                 System.out.printf("Tiempo para llegar a destino: %.2f dias.\n", travelTime);
@@ -296,10 +292,19 @@ public class App {
             fuelReserve = recomendedFuel(distances[chosenPlanet]);
             oxigenReserve = recomendedOxigen(distances[chosenPlanet]);
         } else {
-            System.out.println("Ingresa la cantidad de combustible interplanetario que deseas llevar: ");
-            fuelReserve = sc.nextDouble();
-            System.out.println("Ingresa la cantidad de oxigeno interplanetario que deseas llevar: ");
-            oxigenReserve = sc.nextDouble();
+            do {
+                System.out.print("Ingresa la cantidad de combustible interplanetario que deseas llevar: ");
+                fuelReserve = sc.nextDouble();
+                System.out.print("Ingresa la cantidad de oxigeno interplanetario que deseas llevar: ");
+                oxigenReserve = sc.nextDouble();
+
+                if (fuelReserve <= 0 || oxigenReserve <= 0) {
+                    System.out.println("Cantidad de recursos invalida. Intentelo de nuevo.");
+                } else {
+                    System.out.println("Recursos cargados exitosamente.");
+                }
+
+            } while (fuelReserve <= 0 || oxigenReserve <= 0);
         }
     }
 
