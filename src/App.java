@@ -407,7 +407,7 @@ public class App {
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
+            System.out.print("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
 
             sc.nextLine();
@@ -455,7 +455,7 @@ public class App {
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
+            System.out.print("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
             sc.nextLine();
             switch (option) {
@@ -503,7 +503,7 @@ public class App {
                 """, oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
+            System.out.print("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
 
             sc.nextLine();
@@ -552,7 +552,7 @@ public class App {
                 oxygen, oxigenReserve, fuel, fuelReserve);
 
         do {
-            System.out.println("Ingresa el numero de la accion que deseas realizar: ");
+            System.out.print("Ingresa el numero de la accion que deseas realizar: ");
             option = sc.nextInt();
 
             sc.nextLine();
