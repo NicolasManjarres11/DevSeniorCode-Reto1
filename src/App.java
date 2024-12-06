@@ -2,6 +2,10 @@
 import java.util.Random;
 import java.util.Scanner;
 
+// Autores:
+// NICOLAS MANJARRES GONZALEZ
+// SAMUEL GAVIRIA MORALES
+
 public class App {
 
     // Clases a utilizar
